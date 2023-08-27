@@ -1,24 +1,3 @@
-#Enunciado: Você foi contratado para desenvolver um sistema de cobrança de banho para um petshop. Você ficou com a parte de desenvolver a interface com o funcionário.
-#O petshop opera da seguinte maneira:
-#    • Para cães com peso menor que 3 kg o valor base é de 40 reais;
-#    • Para cães com peso igual ou maior que 3 kg e menor que 10 kg o valor base é de 50 reais;
-#    • Para cães com peso igual ou maior que 10 kg e menor que 30kg o valor base é de 60 reais;  
-#    • Para cães com peso igual ou maior que 30 kg e menor que 50kg o valor base é de 70 reais; 
-
-#    • Para cães com pelo curto (c) o multiplicador é 1;
-#    • Para cães com pelo médio (m) o multiplicador é 1.5;
-#    • Para cães com pelo longo (l) o multiplicador é 2;
-
-#    • Para o adicional de cortar unhas (1) do cachorro é cobrado um valor extra de 10 reais;
-#    • Para o adicional de escovar os dentes (2) do cachorro é cobrado um valor extra de 12 reais;
-#    • Para o adicional de limpar as orelhas (3) do cachorro é cobrado um valor extra de 15 reais;
-#    • Para o adicional de não querer mais nada (0) é cobrado um valor extra de 0 reais;
-
-
-#O valor final da conta é calculado da seguinte maneira:
-
-#total = base * multiplicador + extra
-
 # Mensagem boas-vindas
 def msg(x):
     tam = len(x) # para ficar borda do tamanho do texto digitado
@@ -41,6 +20,7 @@ def cachorro_peso():
                 return 60
             elif (peso >= 30) and (peso < 50):
                 return 70
+                break
             else:
                 print('Não aceitamos cachorros com peso superior a 50 kg.')
         except ValueError: #caso seja digitado letra ou valor inválido
@@ -96,9 +76,10 @@ def cachorro_extra():
 # Início do Main
 msg('SEJA BEM-VINDO(A) AO PETSHOP DA ANA PAULA FERRONATTO')
 print('\nA seguir escolha as opções desejadas para o melhor banho no seu cachorro\n')
-base = cachorro_peso() #Pega o valor do peso
+base = cachorro_peso() #Pega o valor da base referente ao valor do peso
 multiplicador = cachorro_pelo() #pega o valor referente ao tamanho do pelo para multiplicação
 extra = cachorro_extra() #adicionada o valor da quantidade de adicionais escolhidos
 total = (base * multiplicador) + extra
 print('O valor total do banho é de R$ {:.2f} (peso: {} * pelo: {} + adicional(is): {})'.format(total,base,multiplicador,extra)) #coloca :.2f dentro das chaves para valor ficar com apenas duas casas decimais
+
 
