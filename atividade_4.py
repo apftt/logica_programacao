@@ -71,14 +71,17 @@ def consultar_colaborador(): #Menu consuta colaborador
 def remover_colaborador(): #Para remoção de colaboradores
     print('----------------------REMOÇÃO DE COLABORADORES---------------------------------') #Para melhor organização
     id_excluir = int(input('Digite o ID do colaborador a ser removido: '))
+    achou = False
     for colaborador in lista_colaboradores:
         if colaborador['id'] == id_excluir: #Remoção por informação do ID
             lista_colaboradores.remove(colaborador)
             print('Colaborador ', colaborador['nome'], ' removido com sucesso!') #Para informar nome do colaborador desligado
-            return
+            achou = True
+            break
 
-    else:
-        print('Colaborador não encontrado.') #Caso seja digitado ID inexistente
+            return opcao_consulta
+    if not achou:
+        print('Colaborador não encontrado.')
 
 
 #Início do Main
@@ -104,6 +107,3 @@ while True:
         break
     else:
         print("Opção inválida.") #Caso seja digitado algo inexistente
-
-
-
