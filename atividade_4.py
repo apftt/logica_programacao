@@ -1,14 +1,3 @@
-#Enunciado: Você e sua equipe de programadores foram contratados por pequena empresa para desenvolver o software de gerencialme de pessoas. Este software deve ter o seguinte menu e opções:
-
-#    1) Cadastrar Colaborador
-#    2) Consultar Colaborador
-#        1. Consultar Todos 
-#        2. Consultar por Id;
-#        3. Consultar por Setor;
-#        4. Retornar ao menu;
-#    3) Remover Colaborador
-#    4) Encerrar Programa
-
 # Variáveis Globais
 lista_colaboradores = []
 id_global = 0
@@ -32,11 +21,12 @@ def cadastrar_colaborador(id):
 def consultar_colaborador():
     print('----------------------CONSULTA COLABORADOR(ES)---------------------------------')
     while True:
-        opcao_consulta = input('\nDigite a opção desejada:\n'+
+        opcao_consulta = input('\nMenu:\n'+
                       '1.Consultar Todos \n'+
                       '2.Consultar por ID\n'+
                       '3.Consulta por setor\n'+
-                      '4.Retornar ao menu principal')
+                      '4.Retornar ao menu principal\n'
+                      '\nEscolha uma opção:')
 
         opcao_consulta = int(opcao_consulta)
 
@@ -46,6 +36,7 @@ def consultar_colaborador():
             else:
                 for colaborador in lista_colaboradores:
                     print('ID: ', colaborador['id'], '- Nome:', colaborador['nome'], '- Setor:', colaborador['setor'], '- Pagamento: R$ ', colaborador['pagamento'])
+
         elif opcao_consulta == 2:
             id_pesquisar = int(input('Digite o ID do colaborador a ser consultado: '))
             achou = False
@@ -56,6 +47,7 @@ def consultar_colaborador():
                     break
             if not achou:
                 print('Colaborador não encontrado.')
+
         elif opcao_consulta == 3:
             setor_consulta = input('Digite o setor a ser consultado: ')
             encontrados = []
@@ -68,10 +60,13 @@ def consultar_colaborador():
                     print('ID: ', colaborador['id'], '- Nome:', colaborador['nome'], '- Setor:', colaborador['setor'], '- Pagamento: R$ ', colaborador['pagamento'])
             else:
                 print('Colaborador não encontrado neste setor.')
+
         elif opcao_consulta == 4:
             return opcao_consulta
+
         else:
             print('Opção inválida')
+
 def remover_colaborador():
     print('----------------------REMOÇÃO DE COLABORADORES---------------------------------')
     id_excluir = int(input('Digite o ID do colaborador a ser removido: '))
@@ -80,6 +75,7 @@ def remover_colaborador():
             lista_colaboradores.remove(colaborador)
             print('Colaborador ', colaborador['nome'], ' removido com sucesso!')
             return
+
     else:
         print("Colaborador não encontrado.")
 
